@@ -26,3 +26,9 @@ jobs:
 
       - name: Build, test and quality check (Maven)
         run: mvn -B clean verify
+
+      - name: Upload artifact (JAR)
+        uses: actions/upload-artifact@v4
+        with:
+          name: gestor-tareas-ci-jar
+          path: target/*.jar
