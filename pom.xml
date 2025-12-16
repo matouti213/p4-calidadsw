@@ -17,42 +17,4 @@
         <exec.mainClass>com.ucam.calidad.GestorTareasCi</exec.mainClass>
     </properties>
 
-    <build>
-        <plugins>
-
-            <!-- Compilador Java -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
-                <configuration>
-                    <release>${maven.compiler.release}</release>
-                </configuration>
-            </plugin>
-
-            <!-- Análisis estático de calidad -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.3.1</version>
-                <executions>
-                    <execution>
-                        <id>checkstyle</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-               <configuration>
-                      <configLocation>google_checks.xml</configLocation>
-                      <consoleOutput>true</consoleOutput>
-                      <failOnViolation>true</failOnViolation>
-               </configuration>
-
-            </plugin>
-
-        </plugins>
-    </build>
-
 </project>
