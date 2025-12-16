@@ -4,11 +4,17 @@
   "https://checkstyle.org/dtds/configuration_1_3.dtd">
 
 <module name="Checker">
-  <module name="TreeWalker">
-    <module name="NeedBraces"/>
-    <module name="UnusedImports"/>
-    <module name="LineLength">
-      <property name="max" value="120"/>
-    </module>
+
+  <!-- Regla de longitud de línea: va en Checker (NO en TreeWalker) -->
+  <module name="LineLength">
+    <property name="max" value="120"/>
   </module>
+
+  <module name="TreeWalker">
+    <!-- Obliga a usar llaves en if/for/while -->
+    <module name="NeedBraces"/>
+    <!-- Evita imports no usados -->
+    <module name="UnusedImports"/>
+  </module>
+
 </module>
