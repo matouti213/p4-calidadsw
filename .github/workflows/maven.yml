@@ -24,5 +24,5 @@ jobs:
           java-version: "17"
           cache: maven
 
-      - name: Build and test with Maven
-        run: mvn -B clean test package
+      - name: Build, test and quality check (Maven)
+        run: mvn -B clean verify
