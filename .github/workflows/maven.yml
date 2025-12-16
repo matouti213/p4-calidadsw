@@ -1,4 +1,4 @@
-name: CI Maven (build-test-quality-publish)
+name: Java CI with Maven
 
 on:
   push:
@@ -21,23 +21,9 @@ jobs:
           java-version: "17"
           cache: maven
 
-      # 1) Compilación + 2) Tests (si existen)
-      - name: Build and test with Maven
+      - name: Build + tests + package
         run: mvn -B clean verify
 
-      # 3) Análisis estático de calidad (SonarCloud)
-      # Necesitas crear el secret SONAR_TOKEN en GitHub:
-      # Settings -> Secrets and variables -> Actions -> New repository secret
-      - name: SonarCloud scan
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          mvn -B sonar:sonar \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.organization=TU_ORG_SONARCLOUD \
-            -Dsonar.projectKey=TU_PROJECT_KEY
-
-      # 4) Publicación del artefacto (.jar)
       - name: Upload JAR artifact
         uses: actions/upload-artifact@v4
         with:
